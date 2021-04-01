@@ -17,13 +17,13 @@ export default function Home({ gameList }) {
   }, []);
 
   return (
-    <>
+    <div className="page-container">
       <PageHead title="Главная" />
       <Header />
       <main>
         <GameList gameList={gameList} />
       </main>
-    </>
+    </div>
   );
 }
 
