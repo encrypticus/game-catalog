@@ -5,14 +5,29 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint ./components/** ./pages/** ./utils/** -c ./eslintrc.json --ext js,jsx",
+    "lint-fix": "eslint ./components/** ./pages/** ./utils/** -c ./eslintrc.json --fix --ext js,jsx",
+    "eslint-watch": "esw --watch ./components/** ./pages/** ./utils/** -c ./eslintrc.json --fix --ext js,jsx"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@reduxjs/toolkit": "^1.5.1",
     "next": "10.1.2",
+    "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-watch": "^7.0.0",
+    "sass": "^1.32.8"
   }
 }
