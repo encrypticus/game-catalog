@@ -1,5 +1,13 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { rawgConnector } from '../../utils/rawg-connector';
 
-export default (req, res) => {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default async (req, res) => {
+  try {
+    const gameList = await rawgConnector.getGameList();
+    res.statusCode = 200;
+    res.json({
+      gameList,
+    });
+  } catch ({ message }) {
+    console.log(message);
+  }
+};
