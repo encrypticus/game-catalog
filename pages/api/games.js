@@ -2,10 +2,10 @@ import { rawgConnector } from '../../utils/rawg-connector';
 
 export default async (req, res) => {
   try {
-    const gameList = await rawgConnector.getGameList();
+    const gamesData = await rawgConnector.getGamesData();
     res.statusCode = 200;
     res.json({
-      gameList,
+      gamesData,
     });
   } catch ({ message }) {
     console.log(message);

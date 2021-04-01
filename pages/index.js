@@ -7,10 +7,10 @@ import { PageHead } from '../components/Head';
 import { Header } from '../components/Header';
 // import styles from '../styles/Home.module.css';
 
-export default function Home({ gameList }) {
+export default function Home({ gamesData }) {
   useEffect(() => {
     try {
-      console.log(gameList);
+      console.log(gamesData);
     } catch ({ message }) {
       console.log(message);
     }
@@ -21,23 +21,23 @@ export default function Home({ gameList }) {
       <PageHead title="Главная" />
       <Header />
       <main>
-        <GameList gameList={gameList} />
+        <GameList gameList={gamesData.results} />
       </main>
     </div>
   );
 }
 
 Home.propTypes = {
-  gameList: PropTypes.object.isRequired,
+  gamesData: PropTypes.object.isRequired,
 };
 
 export async function getServerSideProps({ query }) {
-  let gameList = null;
+  let gamesData = null;
   try {
     const response = await fetch(`${process.env.URL}/api/games`);
-    gameList = await response.json();
+    gamesData = await response.json();
   } catch ({ message }) {
-    gameList = { error: { message } };
+    gamesData = { error: { message } };
   }
-  return { props: gameList };
+  return { props: gamesData };
 }
