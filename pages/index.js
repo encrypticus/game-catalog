@@ -21,7 +21,9 @@ export default function Home({ gamesData }) {
       <PageHead title="Главная" />
       <Header />
       <main>
-        <GameList gameList={gamesData.results} />
+        <div className="container">
+          <GameList gamesData={gamesData} />
+        </div>
       </main>
     </div>
   );
@@ -32,12 +34,19 @@ Home.propTypes = {
 };
 
 export async function getServerSideProps({ query }) {
+  const { page = 1, search = '' } = query;
   let gamesData = null;
   try {
-    const response = await fetch(`${process.env.URL}/api/games`);
+    const response = await fetch(`${process.env.URL}/api/games`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...query, page, search }),
+    });
     gamesData = await response.json();
   } catch ({ message }) {
     gamesData = { error: { message } };
   }
-  return { props: gamesData };
+  return { props: { gamesData } };
 }
