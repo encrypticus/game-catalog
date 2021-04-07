@@ -60,6 +60,10 @@
     "consistent-return": "off",
     "react-hooks/exhaustive-deps": "off",
     "no-shadow": "off",
+    "jsx-a11y/no-onchange": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-array-index-key": "off",
+    "no-underscore-dangle": "off",
     "import/order": [
       "error",
       {

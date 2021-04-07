@@ -1,20 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
+/* eslint-disable no-console */
+import React, { useEffect, useState } from 'react';
 
 import Router, { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { MetroSpinner } from 'react-spinners-kit';
 
+import { add, changeOptions } from '../../redux/reducers/games-data-reducer';
+import { getQueryString } from '../../utils/query-string';
 import { GameListItem } from './GameListItem';
 import { useStyles } from './styles';
-import { getQueryString } from '../../utils/query-string';
 
 export const GameList = ({ gamesData }) => {
   const styles = useStyles();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { gamesDataReducer: { gamesData: { results }, options } } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
-  let currentPage = 1;
+
+  useEffect(() => {
+    if (gamesData) {
+      if (gamesData.error) {
+        console.log(gamesData.error);
+      } else {
+        dispatch(add(gamesData.gamesData));
+      }
+    }
+  }, [gamesData]);
+
+  useEffect(() => {
+    dispatch(changeOptions(gamesData.options));
+  }, []);
 
   useEffect(() => {
     Router.events.on('routeChangeStart', startLoading);
@@ -35,13 +53,10 @@ export const GameList = ({ gamesData }) => {
       if (pageOffset > lastItemLoadedOffset && !loading) {
         if (gamesData.page < gamesData.maxPage) {
           const nextPage = parseInt(gamesData.page, 10) + 1;
-          // const settings = {
-          //   options: { page: nextPage },
-          // };
-          // const optionsQueryString = getQueryString(settings.options);
-          const queryString = `${router.pathname}?page=${nextPage}`;
+          const optionsQueryString = getQueryString(options);
+          const queryString = `${router.pathname}?page=${nextPage}${optionsQueryString}`;
 
-          router.push(queryString);
+          router.push(queryString, queryString, { scroll: false });
         }
       }
     }
@@ -52,8 +67,8 @@ export const GameList = ({ gamesData }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   });
 
-  const renderGameList = () => (
-    gamesData.gamesData.results.map((gameListItem) => (
+  const renderGameList = (gamesList) => (
+    gamesList.map((gameListItem) => (
       <GameListItem
         key={gameListItem.id}
         gameInfo={gameListItem}
@@ -70,9 +85,9 @@ export const GameList = ({ gamesData }) => {
   return (
     <>
       <ul className={`${styles.root} game-list`}>
-        {renderGameList()}
+        {renderGameList(results)}
       </ul>
-      { loading && renderSpinner() }
+      {loading && renderSpinner()}
     </>
   );
 };

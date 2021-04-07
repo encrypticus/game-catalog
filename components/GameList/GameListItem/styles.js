@@ -3,18 +3,23 @@ import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     overflow: 'hidden',
     width: '100%',
-    maxWidth: '100%',
-    marginRight: 0,
     marginBottom: 10,
-    height: 200,
     padding: 0,
-    [theme.breakpoints.up(800)]: {
-      width: '23%',
-      maxWidth: '95%',
-      marginBottom: 10,
+    [theme.breakpoints.up(768)]: {
+      width: 'calc(50% - 10px)',
+      height: 200,
       marginRight: 10,
+    },
+    [theme.breakpoints.up(992)]: {
+      width: 'calc(33% - 10px)',
+    },
+    [theme.breakpoints.up(1200)]: {
+      width: 'calc(25% - 10px)',
     },
   },
   wrapper: {
@@ -27,7 +32,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   img: {
     width: '100%',
-    height: 'auto',
+    height: 'auto !important',
     display: 'block',
     transition: 'transform .3s',
     '&:hover': {
@@ -40,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
     zIndex: 2,
     left: 0,
     bottom: 0,
-    padding: 5,
+    padding: '5px 10px',
     backgroundColor: 'rgba(0, 0, 0, .7)',
     color: '#fff',
     letterSpacing: 0.5,
@@ -54,5 +59,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   released: {
     margin: 0,
+  },
+  gameLink: {
+    display: 'block',
+    width: '100%',
+  },
+  emptyLink: {
+    [theme.breakpoints.up(768)]: {
+      transform: 'translateY(-25%)',
+      '&:hover': {
+        transform: 'scale(1.1) translateY(-25%)',
+      },
+    },
   },
 }));
