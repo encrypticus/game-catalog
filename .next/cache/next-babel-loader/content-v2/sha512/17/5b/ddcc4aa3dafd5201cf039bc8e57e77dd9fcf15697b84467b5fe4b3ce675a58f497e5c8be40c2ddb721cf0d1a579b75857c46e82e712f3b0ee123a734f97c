@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nexport var __N_SSG = true;\nexport default function Game(_ref) {\n  var game = _ref.game;\n  return /*#__PURE__*/_jsx(\"div\", {\n    children: game.slug\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

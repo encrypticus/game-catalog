@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var API_KEY = 'da040d3c74694ccd93ba910215c99065';","map":{"version":3,"sources":["D:/MyProjects/game-catalog/constants/api-key.js"],"names":["API_KEY"],"mappings":"AAAA,OAAO,IAAMA,OAAO,GAAG,kCAAhB","sourcesContent":["export const API_KEY = 'da040d3c74694ccd93ba910215c99065';\r\n"]},"metadata":{},"sourceType":"module"}

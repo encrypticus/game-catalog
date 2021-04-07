@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { gamesDataReducer } from './reducers/games-data-reducer';\nexport const reducer = {\n  gamesDataReducer\n};","map":null,"metadata":{},"sourceType":"module"}

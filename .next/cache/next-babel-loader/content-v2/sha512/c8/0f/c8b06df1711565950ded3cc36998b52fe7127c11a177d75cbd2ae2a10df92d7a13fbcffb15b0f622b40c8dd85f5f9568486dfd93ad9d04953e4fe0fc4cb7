@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { Search } from './Search';","map":{"version":3,"sources":["D:/MyProjects/game-catalog/components/Search/index.js"],"names":["Search"],"mappings":"AAAA,SAASA,MAAT,QAAuB,UAAvB","sourcesContent":["export { Search } from './Search';"]},"metadata":{},"sourceType":"module"}

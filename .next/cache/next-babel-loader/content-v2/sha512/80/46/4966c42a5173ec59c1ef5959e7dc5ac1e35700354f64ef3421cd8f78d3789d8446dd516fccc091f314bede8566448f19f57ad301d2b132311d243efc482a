@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { Slider } from './Slider';","map":{"version":3,"sources":["D:/MyProjects/game-catalog/components/Slider/index.js"],"names":["Slider"],"mappings":"AAAA,SAASA,MAAT,QAAuB,UAAvB","sourcesContent":["export { Slider } from './Slider';\n"]},"metadata":{},"sourceType":"module"}

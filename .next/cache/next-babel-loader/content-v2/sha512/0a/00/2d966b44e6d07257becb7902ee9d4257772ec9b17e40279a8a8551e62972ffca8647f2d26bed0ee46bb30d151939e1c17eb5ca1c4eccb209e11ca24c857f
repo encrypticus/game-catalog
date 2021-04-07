@@ -1,0 +1,1 @@
+{"ast":null,"code":"/* eslint-disable guard-for-in */\n\n/* eslint-disable no-restricted-syntax */\nexport const getQueryString = options => {\n  let optionsQueryString = '';\n\n  for (const option in options) {\n    optionsQueryString += `&${option}=${options[option]}`;\n  }\n\n  return optionsQueryString;\n};","map":null,"metadata":{},"sourceType":"module"}
